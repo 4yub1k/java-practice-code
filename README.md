@@ -1,2 +1,2 @@
-# java-practice-code
-This is my java practice ground.
+# javascript-practice-code
+This is my javascript practice ground.
