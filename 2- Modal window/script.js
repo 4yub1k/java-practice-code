@@ -21,3 +21,12 @@ btnClose.addEventListener('click', function () {
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
 })
+
+document.addEventListener("keydown",function (event) {
+    //console.log('key',event);
+    //console.log('key Name',event.key);
+    if (event.key == "Escape"){
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+    }
+})
