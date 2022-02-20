@@ -11,7 +11,8 @@ const diceE1 = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
-let currentPlayer=0, scores = [0,0,0,0], diceNumber, winScore=50;
+let currentPlayer=0, scores = [0,0,0,0], diceNumber;
+const winScore=50
 //scores = [player1 score, player2 score, total score player1, total score player2]
 
 score0Ele.textContent = 0;
@@ -25,7 +26,8 @@ const changePlayer = function () {
 }
 
 const winnerCheck = function (currentPlayer) {
-    if (scores[currentPlayer] >= winScore) {
+    if (scores[currentPlayer+2] >= winScore) {
+        console.log(scores[currentPlayer+2],winScore)
         btnRoll.disabled = true;
         btnHold.disabled = true;
         diceE1.classList.add('hidden');
@@ -43,7 +45,7 @@ const winnerCheck = function (currentPlayer) {
 
 const rollDice = function () {
     diceNumber = Math.floor(Math.random() *6) + 1;//0 to 6, or use 7
-    console.log(diceNumber);
+    //console.log(diceNumber);
     //dice-diceNumber.png
     diceE1.classList.remove('hidden');
     diceE1.src = `dice-${diceNumber}.png`; // change attribute
@@ -73,7 +75,6 @@ const rollDice = function () {
 }
 
 const holdDice = function () {
-    console.log('HOLD :',diceNumber, 'Current player : ',currentPlayer)
     //for seperately checking on dice number
     /*if (diceNumber == 1) { 
         btnHold.disabled = true;
@@ -113,6 +114,7 @@ const newDice = function () {
     current1.textContent = 0;
     scores = [0,0,0,0]
     diceE1.classList.add('hidden');
+    document.querySelector(`#win--${currentPlayer}`).classList.add('hidden');
     btnRoll.disabled = false;
     btnHold.disabled = false;
     document
