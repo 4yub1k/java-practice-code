@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Bar</title>
+    <style>
+        #upload .ing {
+            background-color: #fff;
+            border: 1px solid #333;
+            height: 20px;
+        }
+
+        #upload_bar {
+            background-color: rgb(9, 255, 0);
+            height: 20px;
+            display: inline-block
+        }
+
+        #loading_text {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+    </style>
+</head>
+
+<body>
+    <blockquote>
+        <center>
+            <br>
+            <strong>Click the button to upload</strong>
+        </center>
+        <div id="upload" style="display:none">
+            <p class="uploading"><span id="upload_bar"></span></p>
+            <span id="loading_text" style="padding-left:30px;">Uploading...Please wait<br>
+                <strong id="upload_text" style="font-size:20px;">5%</strong></span>
+        </div>
+        <p align="center" id="uploadBtn">
+            <input type='button' onClick='btnUpload()' value='upload' <br>
+        </p>
+    </blockquote>
+    <script>
+        let counter = 0
+        function loading() {
+            counter++;
+            if (counter > 100) {
+                counter = 0;
+                console.log("DONE");
+            } else {
+                document.getElementById("upload_bar").style.width = counter + "%";
+                document.getElementById("upload_text").textContent = counter + "%";
+                setTimeout(loading, 20);
+            }
+        }
+
+        function btnUpload() {
+            document.getElementById("uploadBtn").style.display = "none";
+            document.getElementById("upload").style.display = "";
+            loading();
+        }
+    </script>
+</body>
+
+</html>
